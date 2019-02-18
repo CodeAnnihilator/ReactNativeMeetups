@@ -1,0 +1,8 @@
+{
+	"extends": "equimper",
+	"rules": {
+		"no-console": "off",
+		"indent": ["error", "tab"],
+		"object-curly-spacing": ["error", "never"]
+	}
+}
