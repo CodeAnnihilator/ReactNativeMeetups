@@ -64,11 +64,32 @@ export const createGroupMeetup = async (req, res) => {
 	}
 
 	try {
+		const {meetup} = await Group.addMeetup(groupId, {title, description});
+		return res.status(201).json({error: false, meetup});
+	} catch (err) {
+		return res.status(400).json({error: true, message: 'Meetup cannot be created!'});
+	}
+};
+
+export const getGroupMeetups = async (req, res) => {
+	const {groupId} = req.params;
+
+	if (!groupId) {
+		return res.status(400).json({error: true, message: 'You need to provide a group id'});
+	}
+
+	const group = await Group.findById(groupId);
+
+	if (!group) {
+		return res.status(400).json({error: true, message: 'Group does not exists'});
+	}
+
+	try {
 		return res.status(200).json({
 			error: false,
 			meetups: await Meetup.find({group: groupId}).populate('group', 'name'),
 		});
 	} catch (err) {
-		return res.status(400).json({error: err, message: 'Meetup cannot be created!'});
+		return res.status(400).json({error: true, message: 'Cannot fetch meetup'});
 	}
 };
