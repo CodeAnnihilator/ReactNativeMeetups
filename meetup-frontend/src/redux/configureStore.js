@@ -1,9 +1,12 @@
 /* eslint global-require: 0 */
 import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
+import promiseMiddleware from 'redux-promise-middleware';
 import reducer from './reducers';
 
-const middlewares = [];
+const middlewares = [
+	promiseMiddleware,
+];
 const enhancer = composeWithDevTools(applyMiddleware(...middlewares));
 
 export default function configureStore(initialState) {
