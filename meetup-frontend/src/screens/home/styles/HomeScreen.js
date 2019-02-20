@@ -10,11 +10,9 @@ const styles = EStyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		// backgroundColor: 'red',
 	},
 	bottomContainer: {
 		flex: 0.8,
-		// backgroundColor: 'blue',
 	},
 });
 

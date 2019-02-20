@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3000/api';
+const host = '10.0.1.37';
+
+axios.defaults.baseURL = `http://${host}:3000/api`;
 
 const fakeGroupId = '5c6678d08fb2612915b872bd';
 
