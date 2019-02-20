@@ -1,4 +1,5 @@
 import React from 'react';
+import {Provider} from 'react-redux';
 import {AppLoading} from 'expo';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -6,6 +7,9 @@ import Root from './src/Root';
 
 import Colors from './constants/Colors';
 import {cachedFonts} from './helpers';
+import configureStore from './src/redux/configureStore';
+
+const store = configureStore();
 
 EStyleSheet.build(Colors);
 
@@ -34,7 +38,9 @@ export default class App extends React.Component {
 			return <AppLoading />;
 		}
 		return (
-			<Root />
+			<Provider store={store}>
+				<Root />
+			</Provider>
 		);
 	}
 }
