@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {AppLoading} from 'expo';
+import {AppLoading, Font} from 'expo';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import Root from './src/Root';
@@ -28,6 +28,10 @@ export default class App extends React.Component {
 			{montserratBold: require('./assets/fonts/Montserrat-Bold.ttf')},
 			{montserratLight: require('./assets/fonts/Montserrat-Light.ttf')},
 		]);
+		await Font.loadAsync({
+			'Roboto': require('native-base/Fonts/Roboto.ttf'),
+			'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+		});
 		await Promise.all(fontAssets);
 
 		this.setState({fontLoaded: true});
